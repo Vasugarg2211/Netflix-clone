@@ -1,0 +1,24 @@
+.container-header {
+    padding: 0 4rem;
+}
+
+.logo-header {
+    >img {
+        height: 5rem;
+        width: auto;
+    }
+    
+}
+
+.btn-header {
+    padding: 0.5rem 1rem;
+    margin: auto 0 auto;
+    height: 2rem;
+    background: #e50914;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    font-weight: bolder;
+    font-size: 1.05rem;
+}
