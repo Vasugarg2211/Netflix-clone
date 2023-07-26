@@ -11,7 +11,7 @@ const Player = () => {
                 <div className="back">
                     <BsArrowLeft  onClick={()=>navigate(-1)}/>
                 </div>
-                <video src={video} autoPlay controls muted loop></video>
+                <video src={video}  autoPlay controls muted loop></video>
             </div>
         </div>
     );

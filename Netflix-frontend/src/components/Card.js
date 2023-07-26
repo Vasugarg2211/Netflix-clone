@@ -5,11 +5,42 @@ import video from "../assets/video-netflix.mkv";
 import {IoPlayCircleSharp} from "react-icons/io5";
 import {BiChevronDown} from "react-icons/bi";
 import {RiThumbUpFill, RiThumbDownFill} from "react-icons/ri";
+import { AiOutlinePlus } from "react-icons/ai";
+import { BsCheck } from "react-icons/bs";
+import axios from "axios";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
+// import { useDispatch } from "react-redux";
 
-const Card = ({ movieData }) => {
+const Card = ({ movieData, isLiked=false }) => {
     
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  const [email, setEmail] = useState(undefined);
+  
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if(currentUser) {
+      setEmail(currentUser.email);
+    }
+    else {
+      navigate("/login");
+    }
+  });
+  
+  const addToList = async () => {
+    console.log({email, data:movieData});
+    // console.log(email);
+    // alert("ran");
+    try {
+       await axios.post("http://localhost:5000/api/user/add", {
+        email,
+        data: movieData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
   return (
     <div
@@ -37,7 +68,12 @@ const Card = ({ movieData }) => {
                 <IoPlayCircleSharp title="play" onClick={()=>navigate("/player")}/>
                 <RiThumbUpFill title="Like" />
                 <RiThumbDownFill title="Dislike" />
-                
+                {isLiked ? (
+                  <BsCheck
+                    title="Remove from List" />
+                ) : (
+                  <AiOutlinePlus title="Add to my list" onClick={() => addToList()}/>
+                )}
             </div>
             <div className="info">
                 <BiChevronDown title="More Info" />

@@ -20,16 +20,16 @@ const Netflix = () => {
     
     useEffect(()=> {
         dispatch(getGenres()); 
-    },[dispatch]);
+    },[]);
     
     useEffect(()=> {
         if(genresLoaded) {
             dispatch(fetchMovies({type : "all"}));
         }
-    })
+    },[genresLoaded]);
     // console.log(genresLoaded);
     // console.log(movies);
-    
+    console.log("Hello");
     return (
         <div className="netflix-container">
             <Navbar />
