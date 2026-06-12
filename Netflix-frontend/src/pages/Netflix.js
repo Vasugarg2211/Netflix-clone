@@ -13,23 +13,21 @@ import Slider from "../components/Slider";
 
 const Netflix = () => {
     const navigate = useNavigate();
-    
     const movies = useSelector((state) => state.netflix.movies);
     const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
     const dispatch = useDispatch() ;
     
     useEffect(()=> {
         dispatch(getGenres()); 
-    },[]);
+    },[dispatch]);
     
     useEffect(()=> {
         if(genresLoaded) {
             dispatch(fetchMovies({type : "all"}));
         }
-    },[genresLoaded]);
-    // console.log(genresLoaded);
-    // console.log(movies);
-    console.log("Hello");
+    },[genresLoaded, dispatch]);
+    console.log("hello");
+    
     return (
         <div className="netflix-container">
             <Navbar />
@@ -45,7 +43,6 @@ const Netflix = () => {
                     </div>
                 </div>
             </div>
-            
             <Slider movies={movies}/>
         </div>
     );

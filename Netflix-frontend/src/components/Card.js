@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Card.css";
 import { useNavigate } from "react-router-dom";
-import video from "../assets/video-netflix.mkv";
+import video from "../assets/video-netflix.mp4";
 import {IoPlayCircleSharp} from "react-icons/io5";
 import {BiChevronDown} from "react-icons/bi";
 import {RiThumbUpFill, RiThumbDownFill} from "react-icons/ri";
@@ -56,7 +56,6 @@ const Card = ({ movieData, isLiked=false }) => {
       {isHovered && (
         <div className="hover">
           <div className="image-video-container">
-            
             <video src={video} autoPlay muted loop onClick={()=>navigate("/player")} />
           </div>
           

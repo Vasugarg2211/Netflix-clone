@@ -17,7 +17,7 @@ const CardSlider = ({data, title}) => {
           listRef.current.style.transform = `translateX(${-230 + distance}px)`;
           setSliderPosition(sliderPosition + 1);
         }
-      };
+    };
     
     return (
         <div className="card-slider-container flex column" onMouseEnter={()=>setShowControls(true)} onMouseLeave={()=>setShowControls(false)}>

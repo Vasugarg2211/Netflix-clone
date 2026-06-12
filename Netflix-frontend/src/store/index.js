@@ -32,7 +32,6 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
                 image:movie.backdrop_path,
                 genres: movieGenres.slice(0, 3),
             });
-        
     });
 };
 
@@ -52,9 +51,7 @@ const getRawData = async (api, genres, paging=false) => {
         const {
             data: { results },
           } = await axios.get(`${api}${paging ? `&page=${i}` : ""}`);
-        // const {data:{results}} = await axios.get(
-        //     `${api}${paging?`&page=${i}`:""}`
-        //     );
+          
         createArrayFromRawData(results, moviesArray, genres);
     }
     return moviesArray;

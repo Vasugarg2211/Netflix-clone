@@ -1,7 +1,7 @@
 import "./Player.css";
 import { BsArrowLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import video from "../assets/video-netflix.mkv";
+import video from "../assets/video-netflix.mp4";
 
 const Player = () => {
     const navigate = useNavigate()
